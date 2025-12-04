@@ -49,6 +49,16 @@ void makeWords(string newWord, string& floating, size_t index, size_t n, const s
     return;
   }
   
+  // pruning by checking if blanks < floating letters
+  size_t blanks=0;
+  for(size_t i=0; i<newWord.size(); i++){
+    if(newWord[i] == '-'){
+      blanks++;
+    }
+  }
+  if(blanks < floating.size()){
+    return;
+  }
 
   if(newWord[index] != '-'){
     // if char at index is not -, then move to next index
